@@ -12,13 +12,11 @@
 
 <title>For You Hena</title>
 
-<!-- Elegant Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap"
       rel="stylesheet">
-
 
 <style>
 
@@ -88,7 +86,7 @@ canvas {
         serif;
 
     font-size:
-        clamp(25px, 6.5vw, 46px);
+        clamp(27px, 7vw, 48px);
 
     font-weight: 600;
 
@@ -96,9 +94,11 @@ canvas {
 
     text-transform: uppercase;
 
-    white-space: nowrap;
-
     text-align: center;
+
+    line-height: 1.05;
+
+    width: 90%;
 
     opacity: 0;
 
@@ -201,8 +201,9 @@ canvas {
 @media (max-width: 500px) {
 
     .message {
-        font-size: 24px;
+        font-size: 28px;
         letter-spacing: 1.5px;
+        line-height: 1.05;
     }
 
     .final-message {
@@ -232,7 +233,8 @@ canvas {
 <div id="message"
      class="message">
 
-    I MADE SOMETHING SPECIAL FOR YOU
+    I MADE SOMETHING<br>
+    SPECIAL FOR YOU
 
 </div>
 
@@ -275,13 +277,11 @@ function resizeCanvas() {
             2
         );
 
-
     W =
         window.innerWidth;
 
     H =
         window.innerHeight;
-
 
     canvas.width =
         W * dpr;
@@ -289,13 +289,11 @@ function resizeCanvas() {
     canvas.height =
         H * dpr;
 
-
     canvas.style.width =
         W + "px";
 
     canvas.style.height =
         H + "px";
-
 
     ctx.setTransform(
         dpr,
@@ -369,18 +367,15 @@ function createBranch(
         return;
     }
 
-
     const x2 =
         x +
         Math.cos(angle) *
         length;
 
-
     const y2 =
         y +
         Math.sin(angle) *
         length;
-
 
     branches.push({
 
@@ -397,7 +392,6 @@ function createBranch(
         delay: delay
 
     });
-
 
 
     /* -------------------------
@@ -425,7 +419,6 @@ function createBranch(
     }
 
 
-
     /* -------------------------
        BRANCH ANGLES
     ------------------------- */
@@ -434,15 +427,11 @@ function createBranch(
         .38 +
         random() * .15;
 
-
     const leftAngle =
         angle - spread;
 
-
     const rightAngle =
         angle + spread;
-
-
 
     const newLength =
         length *
@@ -451,14 +440,11 @@ function createBranch(
             random() * .08
         );
 
-
     const newWidth =
         width * .68;
 
-
     const nextDelay =
         delay + .12;
-
 
 
     /* LEFT */
@@ -481,7 +467,6 @@ function createBranch(
     );
 
 
-
     /* RIGHT */
 
     createBranch(
@@ -500,7 +485,6 @@ function createBranch(
         nextDelay
 
     );
-
 
 
     /* EXTRA BRANCH */
@@ -545,15 +529,11 @@ function buildTree() {
 
     seed = 123456;
 
-
     const baseX =
         W / 2;
 
-
     const baseY =
         H * .78;
-
-
 
     createBranch(
 
@@ -615,7 +595,6 @@ function drawBranch(
     }
 
 
-
     const x =
 
         branch.x1 +
@@ -627,7 +606,6 @@ function drawBranch(
         localProgress;
 
 
-
     const y =
 
         branch.y1 +
@@ -637,7 +615,6 @@ function drawBranch(
             branch.y1
         ) *
         localProgress;
-
 
 
     ctx.beginPath();
@@ -653,7 +630,6 @@ function drawBranch(
         x,
         y
     );
-
 
 
     /* -------------------------
@@ -691,10 +667,8 @@ function drawBranch(
     }
 
 
-
     ctx.strokeStyle =
         color;
-
 
     ctx.lineWidth =
         Math.max(
@@ -702,10 +676,8 @@ function drawBranch(
             branch.width
         );
 
-
     ctx.lineCap =
         "round";
-
 
     ctx.stroke();
 }
@@ -748,7 +720,6 @@ function drawLeaf(
     }
 
 
-
     const pulse =
 
         1 +
@@ -760,13 +731,11 @@ function drawLeaf(
         ) * .08;
 
 
-
     const size =
 
         leaf.size *
         appear *
         pulse;
-
 
 
     /* -------------------------
@@ -778,7 +747,6 @@ function drawLeaf(
 
     ctx.shadowColor =
         "rgba(255,90,25,.65)";
-
 
 
     ctx.beginPath();
@@ -799,7 +767,6 @@ function drawLeaf(
     );
 
 
-
     const orange =
 
         150 +
@@ -814,7 +781,6 @@ function drawLeaf(
         Math.floor(
             random() * 45
         );
-
 
 
     ctx.fillStyle =
@@ -866,7 +832,6 @@ function drawExtraFlowers(
         );
 
 
-
     for (
         let i = 0;
         i < amount;
@@ -901,7 +866,6 @@ function drawExtraFlowers(
 
             Math.sin(i) *
             .5;
-
 
 
         ctx.beginPath();
@@ -942,7 +906,6 @@ let startTime =
     performance.now();
 
 
-
 function animate(now) {
 
     const elapsed =
@@ -951,7 +914,6 @@ function animate(now) {
             now -
             startTime
         ) / 1000;
-
 
 
     /* CLEAR SCREEN */
@@ -964,7 +926,6 @@ function animate(now) {
         H
 
     );
-
 
 
     /* -------------------------
@@ -981,7 +942,6 @@ function animate(now) {
             2.2
 
         );
-
 
 
     /* -------------------------
@@ -1003,7 +963,6 @@ function animate(now) {
     }
 
 
-
     /* -------------------------
        LEAVES
     ------------------------- */
@@ -1023,7 +982,6 @@ function animate(now) {
     }
 
 
-
     /* -------------------------
        EXTRA FLOWERS
     ------------------------- */
@@ -1035,12 +993,10 @@ function animate(now) {
     );
 
 
-
     requestAnimationFrame(
         animate
     );
 }
-
 
 
 requestAnimationFrame(
@@ -1065,7 +1021,6 @@ const finalMessage =
     );
 
 
-
 /* -------------------------
    SHOW FIRST TEXT
 ------------------------- */
@@ -1080,7 +1035,6 @@ setTimeout(
     },
     300
 );
-
 
 
 /* -------------------------
@@ -1103,7 +1057,6 @@ setTimeout(
 );
 
 
-
 /* -------------------------
    SHOW FINAL TEXT
 ------------------------- */
@@ -1118,7 +1071,6 @@ setTimeout(
     },
     9500
 );
-
 
 
 /* -------------------------
